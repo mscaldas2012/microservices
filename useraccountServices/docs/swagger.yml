@@ -1,0 +1,146 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.0.1"
+  title: UserAccountServices
+
+# Describe your paths here
+paths:
+  # This is a path endpoint. Change it.
+  /users:
+    # This is a HTTP operation
+    get:
+      # Describe this verb here. Note: you can use markdown
+      description: |
+        Gets `UserAccount` objects.
+        Optional query param of **size** determines
+        size of returned array
+      # This is array of GET operation parameters:
+      parameters:
+        # An example parameter that is in query and is required
+        -
+          name: size
+          in: query
+          description: Size of array
+          required: true
+          type: number
+          format: double
+      # Expected responses for this operation:
+      responses:
+        # Response code
+        200:
+          description: Successful response
+          # A schema describing your response object.
+          # Use JSON Schema format
+          schema:
+            title: ArrayOfUserAccounts
+            type: array
+            items:
+              title: UserAccount
+              type: object
+              properties:
+                username:
+                  type: string
+                firstname:
+                  type: string
+                lastname:
+                  type: string
+                email:
+                  type: string
+                userStatus:
+                  type: string
+  /user/{username}:  
+    get:
+      # Describe this verb here. Note: you can use markdown
+      description: |
+        Gets `UserAccount` objects.
+        Optional query param of **size** determines
+        size of returned array
+      # This is array of GET operation parameters:
+      parameters:
+        # An example parameter that is in query and is required
+        -
+          name: username
+          in: path
+          description: Id of useraccount to fetch
+          required: true
+          type: string
+          format: string
+      responses:
+        # Response code
+        200:
+          description: Successful response
+          # A schema describing your response object.
+          # Use JSON Schema format
+          schema:
+            title: UserAccount
+            type: array
+            items:
+              title: UserAccount
+              type: object
+              properties:
+                username:
+                  type: string
+                firstname:
+                  type: string
+                lastname:
+                  type: string
+                email:
+                  type: string
+                userStatus:
+                  type: string
+ 
+  /user/{username}/login:
+    post:
+      # Describe this verb here. Note: you can use markdown
+      description: |
+        Starts a session for a given user. Clients should call this method to initiate a session and retrieve a token.
+      # This is array of GET operation parameters:
+      parameters:
+        # An example parameter that is in query and is required
+        -
+          name: username
+          in: path
+          description: Id of useraccount to fetch
+          required: true
+          type: string
+          format: string
+        - 
+          name: password
+          in: query
+          description: the password for the user
+          required: true
+          type: string
+          format: string
+      responses:
+        # Response code
+        200:
+          description: Successful response
+          schema:
+            title: Token
+            type: string
+           
+  /validateToken/{token}:
+    get:
+      # Describe this verb here. Note: you can use markdown
+      description: |
+        Checks the status of a given session. Services should receive the token from clients and call this method to validate whether the session is still valid, or the user has been authenticated.
+      # This is array of GET operation parameters:
+      parameters:
+        # An example parameter that is in query and is required
+        -
+          name: token
+          in: path
+          description: token generated for the given session.
+          required: true
+          type: string
+          format: string
+      responses:
+        # Response code
+        200:
+          description: Successful response
+                  
