@@ -24,6 +24,7 @@
 		<java.version>1.8</java.version>
 		<docker.image.prefix>mscaldas</docker.image.prefix>
         <snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
+		<spring.cloud.version>1.2.1.RELEASE</spring.cloud.version>
 
     </properties>
     <!--<dependencyManagement>-->
@@ -68,6 +69,11 @@
 			<optional>true</optional>
 		</dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
 		<!-- Spring Cloud / Netflix OSS -->
 		<!--<dependency>-->
 			<!--<groupId>org.springframework.cloud</groupId>-->
@@ -100,16 +106,34 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-eureka</artifactId>
-            <version>1.2.1.RELEASE</version>
+            <version>${spring.cloud.version}</version>
         </dependency>
 
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-netflix-eureka-client</artifactId>
-            <version>1.2.1.RELEASE</version>
+            <version>${spring.cloud.version}</version>
         </dependency>
-    </dependencies>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-netflix-hystrix</artifactId>
+			<version>${spring.cloud.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-netflix-hystrix-dashboard</artifactId>
+			<version>${spring.cloud.version}</version>
+		</dependency>
+
+        <dependency>
+            <groupId>com.netflix.hystrix</groupId>
+            <artifactId>hystrix-javanica</artifactId>
+            <version>1.4.0-RC1</version>
+        </dependency>
+	</dependencies>
 
 	<build>
 		<plugins>
