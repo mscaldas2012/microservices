@@ -1,0 +1,14 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: hello-world
+  freemarker:
+    enabled: false
+  thymeleaf:
+    cache: false
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
