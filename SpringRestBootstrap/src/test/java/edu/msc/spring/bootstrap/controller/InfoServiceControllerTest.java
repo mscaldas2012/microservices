@@ -16,7 +16,7 @@ import static org.hamcrest.Matchers.containsString;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-public class InfoServicesTest {
+public class InfoServiceControllerTest {
 
     @Autowired
     private About about;
@@ -35,7 +35,7 @@ public class InfoServicesTest {
                 get(this.rootAPIIURL + "info/about").
         then().
                 statusCode(200).
-                body("summary", containsString("pring REST services"));
+                body("summary", containsString("Spring REST services"));
     }
 
     @Test

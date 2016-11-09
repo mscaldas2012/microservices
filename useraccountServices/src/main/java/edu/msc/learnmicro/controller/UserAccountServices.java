@@ -33,7 +33,7 @@ public class UserAccountServices {
     }
 
     @RequestMapping(value="/{username}")
-    public ResponseEntity<UserAccount> getUserByUsername(@PathVariable String username) throws JsonProcessingException {
+    public ResponseEntity<UserAccount> getUserByUsername(@PathVariable String username) {
         UserAccount user = repository.findByUsername(username);
         if (user == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

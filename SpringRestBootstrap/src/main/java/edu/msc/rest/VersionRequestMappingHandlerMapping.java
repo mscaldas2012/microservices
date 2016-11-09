@@ -65,13 +65,11 @@ public class VersionRequestMappingHandlerMapping extends RequestMappingHandlerMa
         ApiVersion methodAnnotation = AnnotationUtils.findAnnotation(method, ApiVersion.class);
         if(methodAnnotation != null) {
             RequestCondition<?> methodCondition = getCustomMethodCondition(method);
-            // Concatenate our ApiVersion with the usual request mapping
             info = createApiVersionInfo(methodAnnotation, methodCondition).combine(info);
         } else {
             ApiVersion typeAnnotation = AnnotationUtils.findAnnotation(handlerType, ApiVersion.class);
             if(typeAnnotation != null) {
                 RequestCondition<?> typeCondition = getCustomTypeCondition(handlerType);
-                // Concatenate our ApiVersion with the usual request mapping
                 info = createApiVersionInfo(typeAnnotation, typeCondition).combine(info);
             }
         }
